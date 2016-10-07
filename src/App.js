@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import request from 'superagent';
-// var mock = require('superagent-mocker')(request);
 
 import ProductList from './components/productList/ProductList';
 

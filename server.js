@@ -32,19 +32,3 @@ app.get('/productList', (req, res) => {
 app.listen(port, () => {
   console.log(`fashion app listening on port ${port}!`);
 });
-
-
-//
-// app.all(['/:statusCode', '/:statusCode/*'], (req, res) => {
-//   res
-//     .status(req.params.statusCode)
-//     .send({
-//       errorCode: 'REGISTER_SLR_ERROR',
-//     //   errorCode: 301002,
-//       message: 'LoginInvalidLoginData - invalid user - no login for customer',
-//     });
-//
-//     // HTTP status 421: Error code for no train environment
-//     // res.statusCode = 421;
-//     // res.error();
-// });
