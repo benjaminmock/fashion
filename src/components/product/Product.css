@@ -1,0 +1,70 @@
+.product {
+  outline: 1px solid transparent;
+}
+
+.product:hover {
+  outline: 1px solid #e1e1e1;
+  z-index: 1;
+}
+
+.product:hover .product-image.front {
+  visibility: hidden;
+}
+
+.product:hover .product-image.back {
+  visibility: visible;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  transition:visibility 0s linear 0.5s,opacity 0.5s linear;
+}
+
+.product-image.back {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.product h3, .product p {
+  text-align: center;
+}
+
+.product p {
+  font-size: 13px;
+  line-height: 15px;
+  height: 30px;
+}
+
+.product .sizes {
+  visibility: hidden;
+  color: #aaaaaa;
+  text-align: center;
+}
+
+.product .sizes h4 {
+  font-size: 16px;
+}
+
+.product:hover .sizes {
+  visibility: visible;
+}
+
+.product .sizes ul {
+  list-style: none;
+  padding: 0;
+  display: inline-block;
+}
+
+.product .sizes ul li {
+  float: left;
+  font-size: 11px;
+  padding: 2px;
+  margin: 2px;
+}
