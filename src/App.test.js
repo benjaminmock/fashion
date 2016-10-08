@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { shallow, render, mount } from 'enzyme';
-import nock from 'nock';
+import superagent from 'superagent';
+import request from 'superagent';
 
 describe('App', () => {
     it('renders loading indicator', () => {
@@ -23,16 +24,17 @@ describe('App', () => {
     });
 
     it('renders <ProductList /> if request was successful', () => {
-        nock('http://localhost:8000')
-            .filteringRequestBody(() => '*')
-            .get('/productList', '*')
-            .reply(200, {body: []});
+        request.__setResponse(200, true, [])
 
         const wrapper = mount(<App />);
+        expect(wrapper.find('ProductList').length).toBe(1);
+        expect(wrapper.find('.error').length).toBe(0);
+    });
 
-        setTimeout(() => {
-            expect(wrapper.find('ProductList').length).toEqual(1);
-            done();
-        }, 250);
+    it('renders error if request was not successful', () => {
+        request.__setResponse(403, false, [])
+
+        const wrapper = mount(<App />);
+        expect(wrapper.find('.error').length).toBe(1);
     });
 });
